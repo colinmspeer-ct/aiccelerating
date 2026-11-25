@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Container } from "@/components/container";
@@ -97,6 +98,8 @@ export default async function ToolPage({
               <Stamp>{tool.category}</Stamp>
               <Stamp>Used internally</Stamp>
               {tool.nameTbd ? <Stamp tone="copper">Name TBD</Stamp> : null}
+              {tool.domainTbd ? <Stamp tone="copper">Domain TBD</Stamp> : null}
+              {tool.previewUrl ? <Stamp tone="copper">Preview</Stamp> : null}
             </div>
             <h1 className="mt-5 max-w-3xl font-serif text-4xl leading-[1.05] tracking-tight text-ink md:text-6xl">
               {toolHeading(tool)}
@@ -110,10 +113,40 @@ export default async function ToolPage({
                 The public product name is not final. The tool is listed because we already use it.
               </p>
             ) : null}
-            {url ? (
-              <p className="mt-6 text-base">
-                <ExternalLink href={url}>{tool.domain}</ExternalLink>
-              </p>
+            <div className="mt-6 flex flex-col gap-3 text-base">
+              {url ? (
+                <p>
+                  <ExternalLink href={url}>{tool.domain}</ExternalLink>
+                </p>
+              ) : null}
+              {tool.redirectsFrom && tool.redirectsFrom.length > 0 ? (
+                <p className="text-ink-soft">
+                  {tool.redirectsFrom.join(" and ")} redirects to {tool.domain}.
+                </p>
+              ) : null}
+              {tool.domainTbd ? (
+                <p className="max-w-2xl text-ink-soft">
+                  The public domain is not final.
+                  {tool.domainCandidates && tool.domainCandidates.length > 0
+                    ? ` The hostnames still in the running are ${tool.domainCandidates.join(" and ")}.`
+                    : ""}
+                </p>
+              ) : null}
+              {tool.previewUrl ? (
+                <p>
+                  <ExternalLink href={tool.previewUrl}>Preview</ExternalLink>
+                  <span className="text-ink-soft"> · temporary address</span>
+                </p>
+              ) : null}
+            </div>
+            {tool.image ? (
+              <Image
+                src={tool.image}
+                alt={tool.imageAlt ?? `${toolHeading(tool)} homepage`}
+                width={1440}
+                height={900}
+                className="mt-8 aspect-[16/9] w-full border border-line object-cover object-top"
+              />
             ) : null}
           </Container>
         </header>

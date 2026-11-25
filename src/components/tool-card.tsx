@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { Stamp } from "@/components/stamp";
 import { toolHeading, type Tool } from "@/data/tools";
@@ -7,13 +8,25 @@ export function ToolCard({ tool }: { tool: Tool }) {
     <li>
       <Link
         href={`/tools/${tool.slug}`}
-        className="group flex h-full flex-col border border-line bg-cream p-5 transition-colors hover:border-moss/50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-moss md:p-6"
+        className="group flex h-full flex-col overflow-hidden border border-line bg-cream transition-colors hover:border-moss/50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-moss"
       >
+        {tool.image ? (
+          <Image
+            src={tool.image}
+            alt={tool.imageAlt ?? ""}
+            width={1440}
+            height={900}
+            className="aspect-[16/10] w-full border-b border-line object-cover object-top"
+          />
+        ) : null}
+        <div className="flex flex-1 flex-col p-5 md:p-6">
         <div className="flex flex-wrap items-center gap-2">
           <span className="text-[11px] font-semibold tracking-[0.16em] text-ink-soft uppercase">
             {tool.category}
           </span>
           {tool.nameTbd ? <Stamp tone="copper">Name TBD</Stamp> : null}
+          {tool.domainTbd ? <Stamp tone="copper">Domain TBD</Stamp> : null}
+          {tool.previewUrl ? <Stamp tone="copper">Preview</Stamp> : null}
           <Stamp>Used internally</Stamp>
         </div>
         <h2 className="mt-4 font-serif text-2xl tracking-tight text-ink group-hover:text-moss md:text-3xl">
@@ -26,8 +39,13 @@ export function ToolCard({ tool }: { tool: Tool }) {
           {tool.summary}
         </p>
         <p className="mt-5 text-sm text-ink">
-          {tool.nameTbd ? "Public name not final" : tool.domain}
+          {tool.nameTbd
+            ? "Public name not final"
+            : tool.domainTbd
+              ? "Domain TBD"
+              : tool.domain}
         </p>
+        </div>
       </Link>
     </li>
   );

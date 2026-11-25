@@ -49,7 +49,7 @@ export default function ContactPage() {
             ))}
             <li>
               <span className="font-medium text-ink">Partner access. </span>
-              Say Pest Control School or Home Service School, and whether you are already a member.
+              Say Pest Control School or Home Services School, and whether you are already a member.
             </li>
           </ul>
         </aside>

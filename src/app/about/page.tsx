@@ -29,7 +29,7 @@ const steps = [
   {
     title: "Partners can use it",
     detail:
-      "Swyft commercializes the agency work. Companies in Pest Control School and Home Service School can ask for the tools, including ones still marked Name TBD.",
+      "Swyft commercializes the agency work. Companies in Pest Control School and Home Services School can ask for the tools, including ones still marked Name TBD.",
   },
 ];
 

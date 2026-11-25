@@ -42,7 +42,7 @@ export default function TermsPage() {
           <h2 className="font-serif text-2xl text-ink">Partner access</h2>
           <p className="mt-3">
             Nothing on this site is an offer to sell a license at a published
-            price. Access for Pest Control School and Home Service School is
+            price. Access for Pest Control School and Home Services School is
             arranged separately, in writing, if we agree to it.
           </p>
         </section>

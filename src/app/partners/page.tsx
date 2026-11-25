@@ -12,7 +12,7 @@ import { pageMetadata } from "@/lib/seo";
 export const metadata = pageMetadata({
   title: "Partner access",
   description:
-    "Companies in Pest Control School and Home Service School can use AICCELERATING’s tools. Access is arranged with Colin Speer. There is no public checkout.",
+    "Companies in Pest Control School and Home Services School can use AICCELERATING’s tools. Access is arranged with Colin Speer. There is no public checkout.",
   path: "/partners",
 });
 
@@ -23,7 +23,7 @@ export default function PartnersPage() {
       <PageHeader
         eyebrow="Partner access"
         title="Member companies get the tools."
-        lede="Companies in Pest Control School and Home Service School can use the software we run ourselves. Access is arranged with us. This page is not a checkout and it does not list a price."
+        lede="Companies in Pest Control School and Home Services School can use the software we run ourselves. Access is arranged with us. This page is not a checkout and it does not list a price."
       />
       <section className="border-b border-line">
         <Container className="grid gap-4 py-14 md:grid-cols-2 md:py-20">
@@ -37,6 +37,12 @@ export default function PartnersPage() {
               <p className="mt-4 leading-relaxed text-ink-soft">{partner.detail}</p>
               <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
                 <CtaLink href={`/contact?topic=${partner.id}`}>Apply</CtaLink>
+                <Link
+                  href={`/tools/${partner.toolSlug}`}
+                  className="text-sm font-medium text-moss underline decoration-moss/30 underline-offset-4"
+                >
+                  The product
+                </Link>
                 {partner.url ? (
                   <a
                     href={partner.url}

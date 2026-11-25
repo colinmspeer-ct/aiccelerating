@@ -50,7 +50,7 @@ export default function PrivacyPage() {
         <section>
           <h2 className="font-serif text-2xl text-ink">Links</h2>
           <p className="mt-3">
-            Product sites and Home Service School are separate sites with
+            Product sites and Home Services School are separate sites with
             their own practices. This policy covers aiccelerating.com.
           </p>
         </section>

@@ -7,7 +7,7 @@ import { pageMetadata } from "@/lib/seo";
 export const metadata = pageMetadata({
   title: "Tools",
   description:
-    "Eight AI web apps from AICCELERATING, each used in a business the company operates. Named products have public domains. The rest are marked Name TBD.",
+    "The AICCELERATING tool list. Each app is used in a business the company operates. Unnamed products are marked Name TBD. A preview address is temporary.",
   path: "/tools",
 });
 

@@ -40,7 +40,7 @@ export const contactTopics = [
   { id: "finish-app", label: "Finish my vibe-coded app" },
   { id: "consulting", label: "AI consulting" },
   { id: "pest-school", label: "Partner access — Pest Control School" },
-  { id: "home-school", label: "Partner access — Home Service School" },
+  { id: "home-school", label: "Partner access — Home Services School" },
   { id: "tool", label: "Ask about a specific tool" },
   { id: "other", label: "Something else" },
 ] as const;
@@ -59,20 +59,22 @@ export const partners = [
   {
     id: "pest-school",
     name: "Pest Control School",
-    handle: "pestctrlschool",
-    url: null as string | null,
+    handle: "pestctrlschool.com",
+    url: "https://pestctrlschool.com",
+    toolSlug: "pest-control-school",
     who: "Pest control companies",
     detail:
-      "The group for pest control companies. Member companies can use the tools we build, including PestWize and the phone tools, and the ones still marked Name TBD.",
+      "The group for pest control companies, and the community product in the incubator. Member companies can use the tools we build, including PestWize and the phone tools.",
   },
   {
     id: "home-school",
-    name: "Home Service School",
-    handle: "homeserviceschool.com",
-    url: "https://homeserviceschool.com",
+    name: "Home Services School",
+    handle: "Domain TBD",
+    url: null as string | null,
+    toolSlug: "home-services-school",
     who: "Home service companies",
     detail:
-      "The group for general home services. Member companies can use the same incubator tools, starting with marketing, scheduling, calling, and prospecting.",
+      "The sister school for home service trades. The public domain is not chosen yet. Member companies can use the same incubator tools.",
   },
 ] as const;
 
@@ -97,7 +99,7 @@ export const homeFaqs: Faq[] = [
   {
     question: "What is AICCELERATING?",
     answer:
-      "AICCELERATING LLC is an incubator, owned by Colin Speer, that builds AI tools for pest control and home services. The tools are web apps the company uses in its own businesses. Partner companies in Pest Control School and Home Service School can ask for access.",
+      "AICCELERATING LLC is an incubator, owned by Colin Speer, that builds AI tools for pest control and home services. The tools are web apps the company uses in its own businesses. Partner companies in Pest Control School and Home Services School can ask for access.",
   },
   {
     question: "What does “used internally” mean?",
@@ -176,7 +178,7 @@ export const partnerFaqs: Faq[] = [
   {
     question: "Who gets the tools?",
     answer:
-      "Member companies in Pest Control School and Home Service School. Pest Control School is for pest control companies. Home Service School is for general home services.",
+      "Member companies in Pest Control School and Home Services School. Pest Control School is for pest control operators. Home Services School is the sister platform for home service trades.",
   },
   {
     question: "Is there a price on this site?",
@@ -191,7 +193,7 @@ export const partnerFaqs: Faq[] = [
   {
     question: "How do we apply?",
     answer:
-      "Use the contact form and choose Pest Control School or Home Service School. Say whether you are already a member or you want to join. The note goes to colin@colinmspeer.com.",
+      "Use the contact form and choose Pest Control School or Home Services School. Say whether you are already a member or you want to join. The note goes to colin@colinmspeer.com.",
   },
 ];
 

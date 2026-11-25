@@ -133,12 +133,12 @@ export default function HomePage() {
             The tools
           </p>
           <h2 className="mt-3 max-w-3xl font-serif text-4xl tracking-tight text-ink md:text-5xl">
-            Eight apps. All used here.
+            All of them. Used here.
           </h2>
           <p className="mt-4 max-w-2xl text-lg leading-relaxed text-ink-soft">
-            Each card is a product we run inside a business we operate. Named
-            products link to a real domain. Cards marked Name TBD are in use,
-            and the public name is not final.
+            Each card is a product we run inside a business we operate. Cards
+            marked Name TBD are waiting on a public name. Domain TBD means the
+            hostname is not chosen. Preview means the address is temporary.
           </p>
           <ul className="mt-10 grid gap-4 sm:grid-cols-2">
             {tools.map((tool) => (
@@ -248,7 +248,7 @@ export default function HomePage() {
             Member companies get the tools.
           </h2>
           <p className="mt-4 max-w-2xl text-lg leading-relaxed text-ink-soft">
-            Pest Control School and Home Service School are the groups. Companies
+            Pest Control School and Home Services School are the groups. Companies
             in those groups can use the software we run ourselves. Access is
             arranged with us. There is no checkout on this site.
           </p>
@@ -265,6 +265,12 @@ export default function HomePage() {
                     className="font-medium text-moss underline decoration-moss/30 underline-offset-4"
                   >
                     Apply for access
+                  </Link>
+                  <Link
+                    href={`/tools/${partner.toolSlug}`}
+                    className="text-ink-soft underline decoration-line underline-offset-4"
+                  >
+                    The product
                   </Link>
                   {partner.url ? (
                     <a

@@ -5,7 +5,11 @@
  * Names and domains are not hardcoded anywhere else.
  *
  * - nameTbd: true  → the site stamps the tool "Name TBD". `name` must be NAME_TBD.
- * - nameTbd: false → `name` and `domain` are public. `domain` is a bare hostname.
+ * - nameTbd: false → `name` is public. `domain` is a bare hostname, or empty when `domainTbd` is true.
+ * - domainCandidates: hostnames still being chosen. Shown only when `domainTbd` is true.
+ * - redirectsFrom: bare hostnames that redirect to `domain`.
+ * - previewUrl: the one temporary preview address. Swap it here. The page labels it Preview.
+ * - image: a path under /public, shown on the card and the tool page.
  * - editorNotes is never rendered. Use it for naming ideas or reference links.
  *
  * Describe our product. Do not name competing products in any field on this page.
@@ -26,6 +30,20 @@ export type Tool = {
   workingTitle: string;
   /** Bare hostname, no protocol. Empty string until a real domain exists. */
   domain: string;
+  /** True when the product name is public and the hostname is not. */
+  domainTbd?: boolean;
+  /** Candidate hostnames. Rendered only while domainTbd is true. */
+  domainCandidates?: string[];
+  /** Bare hostnames that redirect to `domain`. */
+  redirectsFrom?: string[];
+  /**
+   * Temporary preview URL. This is the only place that address lives.
+   * Replace it when the tunnel or the launch URL changes.
+   */
+  previewUrl?: string;
+  /** Card and page image, a public path such as /tools/example.png. */
+  image?: string;
+  imageAlt?: string;
   category: string;
   /** One sentence. Shown first on the tool page. */
   summary: string;
@@ -212,7 +230,7 @@ export const tools: Tool[] = [
     audience: "Home service companies, starting with our own work and our partner groups.",
     limit:
       "The name is a placeholder. We do not publish site counts, review totals, or traffic. The claim is that we use it.",
-    related: ["pestwize", "field-service", "lead-enrichment"],
+    related: ["pestwize", "field-service", "home-services-school"],
     faqs: [
       {
         question: "What is this product called?",
@@ -222,7 +240,7 @@ export const tools: Tool[] = [
       {
         question: "Can I buy it today?",
         answer:
-          "There is no public checkout. Partner companies in Home Service School and Pest Control School can ask for access from the contact page.",
+          "There is no public checkout. Partner companies in Home Services School and Pest Control School can ask for access from the contact page.",
       },
       {
         question: "Is the website builder separate from reviews?",
@@ -278,7 +296,7 @@ export const tools: Tool[] = [
       "Pest control companies selling to homeowners and to property accounts.",
     limit:
       "We do not publish close rates, door counts, or an integration list. The claim is that we use PestWize ourselves.",
-    related: ["field-service", "inbound-rep", "outbound-rep"],
+    related: ["field-service", "inbound-rep", "pest-control-school"],
     faqs: [
       {
         question: "What is PestWize?",
@@ -541,6 +559,160 @@ export const tools: Tool[] = [
     ],
     editorNotes: "",
   },
+  {
+    slug: "pest-control-school",
+    name: "Pest Control School",
+    nameTbd: false,
+    workingTitle: "Community and courses for pest control operators",
+    domain: "pestctrlschool.com",
+    redirectsFrom: ["pestcontrolschool.com"],
+    previewUrl: "https://concrete-kenneth-acquisitions-paintings.trycloudflare.com",
+    image: "/tools/pest-control-school.png",
+    imageAlt: "Pest Control School homepage, with the Everyone feed and pest category schools",
+    category: "Community",
+    summary:
+      "Pest Control School is the community and course platform for pest control operators. The permanent domain is pestctrlschool.com. The link marked Preview is a temporary address.",
+    description: [
+      "Pest Control School is where a pest control operator reads the short posts, then goes into a school for the pest in front of them, or for the business around the work.",
+      "Everyone is the short feed: text, images, and video. Each pest category has its own school: rodents, termites, mosquitoes, bed bugs, stinging insects, general pest, and wildlife. The business schools cover sales and door-to-door, local SEO and Google Business Profile, marketing, operations, hiring, and buying or selling a pest business.",
+      "Courses keep a member’s progress. A playbook is a PDF of the current strategy, and it is regenerated when Colin updates that strategy. Membership billing runs on Stripe. A creator earns half of what their course sells. The preview does not charge a card.",
+    ],
+    capabilities: [
+      {
+        title: "Everyone feed",
+        detail:
+          "Short posts with text, images, and video, in front of the deeper schools.",
+      },
+      {
+        title: "A school per pest, and for the business",
+        detail:
+          "Rodents, termites, mosquitoes, bed bugs, stinging insects, general pest, and wildlife, plus sales, local SEO, marketing, operations, hiring, and buying or selling a company.",
+      },
+      {
+        title: "Courses with progress",
+        detail:
+          "A member can move through a course and see what they have finished.",
+      },
+      {
+        title: "Living playbooks",
+        detail:
+          "The PDF is the current strategy. When Colin updates it, the playbook is regenerated.",
+      },
+      {
+        title: "Stripe memberships, half to the creator",
+        detail:
+          "Membership is billed on Stripe. A creator earns 50% of the sales of a course they sell. The preview does not charge a card.",
+      },
+    ],
+    operator: {
+      name: "AICCELERATING",
+      detail:
+        "Colin Speer runs Pest Control School. He writes the strategy, and the playbooks follow that writing.",
+    },
+    usedInternally: "Run by Colin Speer for pest control operators in our group.",
+    audience: "Pest control operators, and the people who teach them.",
+    limit:
+      "The Preview link is a temporary address. We do not publish a member count, and the preview does not charge a card.",
+    related: ["home-services-school", "pestwize", "d2d-job"],
+    faqs: [
+      {
+        question: "What is Pest Control School?",
+        answer:
+          "It is a community and course platform for pest control operators. There is a short Everyone feed, a school for each pest category, business schools, courses that track progress, and playbook PDFs that regenerate when the strategy changes.",
+      },
+      {
+        question: "Which address is the real one?",
+        answer:
+          "pestctrlschool.com is the domain. pestcontrolschool.com redirects to it. The link marked Preview is temporary and will be replaced.",
+      },
+      {
+        question: "How do creators get paid?",
+        answer:
+          "A creator earns 50% of the sales of a course they sell. Membership billing runs on Stripe. The current preview does not charge a card.",
+      },
+      {
+        question: "What is a living playbook?",
+        answer:
+          "A PDF of the strategy as it stands. When Colin updates that strategy, the PDF is regenerated, so the download is the latest version.",
+      },
+    ],
+    editorNotes: "",
+  },
+  {
+    slug: "home-services-school",
+    name: "Home Services School",
+    nameTbd: false,
+    workingTitle: "Community and courses for home service trades",
+    domain: "",
+    domainTbd: true,
+    domainCandidates: ["homeservicesschool.com", "homeserviceschool.com"],
+    previewUrl: "https://solar-regions-surprised-silent.trycloudflare.com",
+    image: "/tools/home-services-school.png",
+    imageAlt: "Home Services School homepage, with trade schools for roofing, windows, and the rest",
+    category: "Community",
+    summary:
+      "Home Services School is the sister platform to Pest Control School, for home service trades. The public domain is not chosen yet. The link marked Preview is a temporary address.",
+    description: [
+      "Home Services School is the same kind of community for the trades around the house. Each trade has a school: roofing and exteriors, windows, lawn, water treatment, HVAC, plumbing, solar, and home security.",
+      "It shares the business schools with Pest Control School, and it shares the Everyone feed, the living playbooks, and the creator split. A creator earns half of what their course sells.",
+      "The public hostname is not final. The two names still in the running are homeservicesschool.com and homeserviceschool.com. Membership billing is Stripe, and the preview does not charge a card.",
+    ],
+    capabilities: [
+      {
+        title: "A school for each trade",
+        detail:
+          "Roofing and exteriors, windows, lawn, water treatment, HVAC, plumbing, solar, and home security.",
+      },
+      {
+        title: "The same business schools",
+        detail:
+          "Sales, local search, marketing, operations, and hiring sit alongside the trade schools, shared with Pest Control School.",
+      },
+      {
+        title: "Feed, courses, and playbooks",
+        detail:
+          "Short posts with text, images, and video. Courses track progress. Playbook PDFs regenerate when the strategy is updated.",
+      },
+      {
+        title: "Half of course sales to the creator",
+        detail:
+          "A creator earns 50% of the sales of a course they sell. Membership billing runs on Stripe. The preview does not charge a card.",
+      },
+    ],
+    operator: {
+      name: "AICCELERATING",
+      detail:
+        "Colin Speer runs Home Services School beside Pest Control School. The two share the business schools and the playbook model.",
+    },
+    usedInternally: "Run by Colin Speer as the sister school to Pest Control School.",
+    audience: "Owners and operators in home service trades, and the people who teach them.",
+    limit:
+      "The domain is not chosen. The Preview link is a temporary address. We do not publish a member count, and the preview does not charge a card.",
+    related: ["pest-control-school", "home-service-marketing", "field-service"],
+    faqs: [
+      {
+        question: "What is Home Services School?",
+        answer:
+          "It is the sister platform to Pest Control School, for home service trades. Each trade has a school. The feed, the business schools, the playbooks, and the 50% creator share are shared with Pest Control School.",
+      },
+      {
+        question: "What is the domain?",
+        answer:
+          "Not chosen yet. The two hostnames still in the running are homeservicesschool.com and homeserviceschool.com. Neither is the launch address until one of them is.",
+      },
+      {
+        question: "Is the Preview link the permanent site?",
+        answer:
+          "No. Preview is a temporary address. It will be replaced when the domain is chosen.",
+      },
+      {
+        question: "Which trades have a school?",
+        answer:
+          "Roofing and exteriors, windows, lawn, water treatment, HVAC, plumbing, solar, and home security.",
+      },
+    ],
+    editorNotes: "",
+  },
 ];
 
 function assertCatalog(catalog: Tool[]) {
@@ -558,8 +730,24 @@ function assertCatalog(catalog: Tool[]) {
     if (tool.domain.includes("://") || tool.domain.includes("/")) {
       throw new Error(`${tool.slug}: domain must be a bare hostname.`);
     }
-    if (!tool.nameTbd && tool.domain.length === 0) {
-      throw new Error(`${tool.slug}: named products need a domain.`);
+    if (!tool.nameTbd && tool.domain.length === 0 && !tool.domainTbd) {
+      throw new Error(`${tool.slug}: named products need a domain, or domainTbd: true.`);
+    }
+    if (tool.domainTbd && tool.domain.length > 0) {
+      throw new Error(`${tool.slug}: clear domain or turn off domainTbd.`);
+    }
+    for (const host of tool.redirectsFrom ?? []) {
+      if (host.includes("://") || host.includes("/")) {
+        throw new Error(`${tool.slug}: redirectsFrom entries must be bare hostnames.`);
+      }
+    }
+    for (const host of tool.domainCandidates ?? []) {
+      if (host.includes("://") || host.includes("/")) {
+        throw new Error(`${tool.slug}: domainCandidates entries must be bare hostnames.`);
+      }
+    }
+    if (tool.previewUrl && !tool.previewUrl.startsWith("https://")) {
+      throw new Error(`${tool.slug}: previewUrl must be an https URL.`);
     }
   }
   for (const tool of catalog) {
