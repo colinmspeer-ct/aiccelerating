@@ -5,6 +5,7 @@ import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { company } from "@/data/site";
 import { organizationSchema, websiteSchema } from "@/lib/schema";
+import { absoluteUrl } from "@/lib/seo";
 import "./globals.css";
 
 const sans = Instrument_Sans({
@@ -34,11 +35,11 @@ export const metadata: Metadata = {
   creator: company.legalName,
   publisher: company.legalName,
   category: "software",
-  alternates: { canonical: company.url },
+  alternates: { canonical: absoluteUrl("/") },
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: company.url,
+    url: absoluteUrl("/"),
     siteName: company.legalName,
     title: "AICCELERATING — AI tools we actually run",
     description: company.description,

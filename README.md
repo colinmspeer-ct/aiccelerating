@@ -41,9 +41,8 @@ There is a `TODO(HighLevel)` in [`src/components/contact-form.tsx`](src/componen
 
 ## Deploy
 
-Do not deploy from this repo unless you mean to. When you do:
+Pushing `main` runs [`.github/workflows/pages.yml`](.github/workflows/pages.yml). That workflow builds the static export and deploys `out/` to GitHub Pages. `public/CNAME` publishes `aiccelerating.com`. There is no `basePath`, because the custom domain is served from the site root.
 
-- **Cloudflare Pages:** build command `npm run build`, output directory `out`. `public/_headers` is copied into the output for a few basic response headers.
-- **GitHub Pages:** publish the `out` directory. For a custom domain at the site root, leave `basePath` unset. A project-site URL such as `username.github.io/repo` needs a `basePath` in `next.config.ts`.
+Canonical URLs, `sitemap.xml`, and `robots.txt` use `https://aiccelerating.com`. DNS for that domain is configured at the registrar, not in this repo.
 
-The canonical host in metadata is `https://aiccelerating.com`.
+`npm run build` writes the same static site to `out/` for a local check.
